@@ -19,7 +19,7 @@
 num1 = int(input("몇시고?"))
 dn = input("am이여? pm이여?")
 num2 = int(input("얼마나 시간이 지났니?"))
-time = (num1 + num2) % 12
+
 
 if(dn == 'am') :
     hn = 'pm'

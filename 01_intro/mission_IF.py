@@ -19,16 +19,13 @@
 num1 = int(input("몇시고?"))
 dn = input("am이여? pm이여?")
 num2 = int(input("얼마나 시간이 지났니?"))
+time = (num1 + num2) % 12
+if time == 0 :
+    time = 12
 
-if(dn == 'am') :
-    if(num1 + num2 < 12) :
-        time = num1 + num2
-    else : 
-        time = num1 + num2 -12
+if((num1 + num2) // 12 % 2 == 1 ):
+    hn = 'pm'
 else:
-    if(num1 + num2 < 12) :
-        time = num1 + num2
-    else :
-        time = num1 + num2 -12
+    hn = 'am'
 
-print(f"지금은 {time}시네")
+print(f"지금은 {hn}{time}시네")

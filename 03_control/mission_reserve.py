@@ -58,7 +58,7 @@ while(True):
 
 #공약수
 def gcd(a, b):
-    while b != 0:
+    while(b != 0):
         temp = b
         b = a % b
         a = temp
@@ -79,7 +79,7 @@ for i in range(1,num+1):
 #성적 출력
 while(True):
     num = int(input("첫 번째 수를 입력하세요: "))
-    if(num <0 ):
+    if(num < 0):
         break
     elif(num >= 90):
         res = 'A'
@@ -95,10 +95,10 @@ while(True):
 
 #소수 출력
 def is_prime(num):
-    if num < 2:
+    if (num < 2):
         return False
     for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
+        if (num % i == 0):
             return False
     return True
 

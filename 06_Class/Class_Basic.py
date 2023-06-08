@@ -373,4 +373,142 @@ m.attack()  # Merlin casts a magic missile.
 m.teleport()  # Merlin teleports to a nearby location.
 
 #================================================================================================================
-#클래스 분리
+#클래스 분리 <클래스 분리는 하나의 클래스를 여러 개의 클래스로 분리하여 코드의 재사용성과 가독성을 높힘 >
+#1.Player Class
+class Player:
+    def __init__(self, name, hp, attack):
+        self.name = name
+        self.hp = hp
+        self.attack = attack
+
+    def attack_monster(self, monster):
+        print(f"{self.name}이(가) {monster.name}을(를) 공격했습니다.")
+        damage = self.attack
+        monster.defend(damage)
+
+    def defend(self, damage):
+        self.hp -= damage
+        if self.hp <= 0:
+            print(f"{self.name}이(가) 죽었습니다.")
+        else:
+            print(f"{self.name}의 체력이 {self.hp} 남았습니다.")
+
+#2.Monster Class
+class Monster:
+    def __init__(self, name, hp, attack):
+        self.name = name
+        self.hp = hp
+        self.attack = attack
+
+    def attack_player(self, player):
+        print(f"{self.name}이(가) {player.name}을(를) 공격했습니다.")
+        damage = self.attack
+        player.defend(damage)
+
+    def defend(self, damage):
+        self.hp -= damage
+        if self.hp <= 0:
+            print(f"{self.name}이(가) 죽었습니다.")
+        else:
+            print(f"{self.name}의 체력이 {self.hp} 남았습니다.")
+
+#3.Game Class
+class Game:
+    def __init__(self):
+        self.player = None
+        self.monster = None
+
+    def create_player(self, name, hp, attack): #생성자 만들기
+        self.player = Player(name, hp, attack)
+
+    def create_monster(self, name, hp, attack):
+        self.monster = Monster(name, hp, attack)
+
+    def fight(self):
+        while self.player.hp > 0 and self.monster.hp > 0:
+            self.player.attack_monster(self.monster) 
+            if self.monster.hp <= 0:
+                break
+            self.monster.attack_player(self.player)
+            if self.player.hp <= 0:
+                break
+game = Game()
+game.create_player("Alice", 100, 10)
+game.create_monster("Goblin", 50, 5)
+game.fight()
+
+#================================================================================================================
+#추상 클래스 <인스턴스를 생성할 수 없는 클래스>
+#추상 클래스는 하나 이상의 추상 메서드(abstract method)를 포함하고 있어, 하위 클래스에서 이를 오버라이딩하여 구체적인 구현을 제공해야만 인스턴스를 생성 가능
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod #추상매서드 decorator를 붙여야함 <하위 클래스가 해당 메서드를 구현하지 않으면 오류가 발생>
+    def get_num_wheels(self):
+        pass
+
+class Car(Vehicle):
+    def get_num_wheels(self):
+        return 4
+
+class Motorcycle(Vehicle):
+    def get_num_wheels(self):
+        return 2
+
+#------------------------------------------------------------------------------------------------------------------
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):
+    @abstractmethod
+    def start(self):
+        pass
+    
+    @abstractmethod
+    def stop(self):
+        pass
+    
+class Car(Vehicle):
+    def start(self):
+        print("Car started.")
+        
+    def stop(self):
+        print("Car stopped.")
+
+class Bike(Vehicle):
+    def start(self):
+        print("Bike started.")
+        
+    def stop(self):
+        print("Bike stopped.")
+
+vehicles = [Car(), Bike()] #다형성
+
+for vehicle in vehicles:
+    vehicle.start()
+    vehicle.stop()
+
+#================================================================================================================
+#다형성 <같은 이름의 메서드나 함수가 다른 객체에서 다른 동작을 하도록 만드는 것>
+
+class 동물:
+    def 소리내기(self):
+        print("동물이 소리를 냅니다.")
+
+class 개(동물):
+    def 소리내기(self):  # 메서드 오버라이딩
+        print("멍멍!")
+
+class 고양이(동물):
+    def 소리내기(self):
+        print("야옹!")
+
+def 동물들_소리내기(동물_리스트):
+    for 동물_인스턴스 in 동물_리스트:
+        동물_인스턴스.소리내기()
+
+개_인스턴스 = 개()
+고양이_인스턴스 = 고양이()
+
+동물들 = [개_인스턴스, 고양이_인스턴스]
+동물들_소리내기(동물들)
+

@@ -315,7 +315,7 @@ bin(12)   #'0b1100'
 int('123') #123
 int('1010', 2) #10
 
-#enumerate(iterable,start=0) : 주로 순서가 있는 자료형(리스트, 튜플 등)의 각 요소에 대해 인덱스와 값을 동시에 반환하는데 사용
+#enumerate(iterable,start=0) : 주로 순서가 있는 자료형(리스트<[]>, 튜플<()> 등)의 각 요소에 대해 인덱스와 값을 동시에 반환하는데 사용
 colors = ['red', 'green', 'blue']
 for index, color in enumerate(colors):
     print(index, color)
@@ -324,13 +324,13 @@ for index, color in enumerate(colors):
 result = eval('2 + 3 * 4')
 print(result)  # 출력 결과: 14
 
-#filter(func,seq) : 시퀀스의 각 요소에 대해 함수를 적용하여 결과가 True인 것만 모아서 리스트로 반환하는 함수
+#filter(func,seq) : 시퀀스의 각 요소에 대해 함수를 적용하여 결과가 True인 것만 모아서 리스트<[]>로 반환하는 함수
 #리스트에서 짝수만 추출하는 예시
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
 print(even_numbers)  # 출력 결과: [2, 4, 6, 8, 10]
 
-#map(함수, 시퀀스) : 시퀀스의 각 원소에 대해 지정된 함수를 적용하여, 새로운 리스트를 반환
+#map(함수, 시퀀스) : 시퀀스의 각 원소에 대해 지정된 함수를 적용하여, 새로운 리스트<[]>를 반환
 numbers = [1, 2, 3, 4, 5]
 squares = list(map(lambda x: x**2, numbers))
 print(squares)  # 출력결과: [1, 4, 9, 16, 25]

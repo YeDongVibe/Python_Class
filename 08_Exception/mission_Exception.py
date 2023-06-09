@@ -15,3 +15,13 @@ while (True):
         print("except : 항목이 없습니다")
         break
     
+#0,None,null은 false / 양수, 음수는 모두 true
+while(True):
+    st = input("요일을 입력하라")
+    val = data.get(st)
+
+    if(val is not None):
+        print(val)
+    else:
+        print("else : 항목이 없습니다.")
+        break

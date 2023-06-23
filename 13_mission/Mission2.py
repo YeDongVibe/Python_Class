@@ -11,7 +11,11 @@ url = 'https://www.melon.com/search/song/index.htm?q=%EC%84%B8%EB%B8%90%ED%8B%B4
 response = requests.get(url, headers=headers)
 
 soup = BeautifulSoup(response.text, 'html.parser')
+trs = soup.select(' #frm_defaultList > div > table > tbody > tr')
+for tr in trs:
+    rank = tr.select_one('td.no').text[0:2]
+    title = tr.select_one('a.fc_gray').text
+    album_element = tr.select_one('div.ellipsis.a.fc_mgray')
+    album = album_element.get('title') if album_element else "Unknown Album"
 
-s=[]
-
-rank = soup.find_all("")
+    print(rank, title, album)

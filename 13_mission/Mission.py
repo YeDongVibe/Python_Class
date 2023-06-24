@@ -16,7 +16,6 @@ for tr in trs:
     rank = tr.select_one('td.number').text[0:2]
     title = tr.select_one('a.title.ellipsis').text
     album = tr.select_one('a.albumtitle.ellipsis').text
-    # rank = re.sub('[^0-9a-zA-Zㄱ-힗]', '', rank)
     title = re.sub('[^0-9a-zA-Zㄱ-힗]', '', title)
     album = re.sub('[^0-9a-zA-Zㄱ-힗]', '', album)
     title = title.replace('TITLE', '')
@@ -24,6 +23,6 @@ for tr in trs:
     s.append([rank, title, album])
     print(rank, title, album)
 
-df = pd.DataFrame(s, columns=['순위', 'Title명', '앨범명'])
-df.to_csv('seventeen.csv', index=False)
+# df = pd.DataFrame(s, columns=['순위', 'Title명', '앨범명'])
+# df.to_csv('seventeen.csv', index=False)
 

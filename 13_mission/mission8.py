@@ -16,8 +16,6 @@ for tr in trs:
     rank = tr.select_one('td.number').text[0:2].strip()
     title = tr.select_one('a.title.ellipsis').text.strip()
     album = tr.select_one('a.albumtitle.ellipsis').text.strip()
-    # title = re.sub('[^0-9a-zA-Zㄱ-힗]', '', title)
-    # album = re.sub('[^0-9a-zA-Zㄱ-힗]', '', album)
     title = title.replace('TITLE', '')
 
     s.append([rank, title, album])

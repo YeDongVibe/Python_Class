@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the CSV file
-df = pd.read_csv('seventeen_modified.csv')
+df = pd.read_csv('seventeen2.csv')
 
 # Count the occurrences of each album name
 album_counts = df['앨범명'].value_counts()

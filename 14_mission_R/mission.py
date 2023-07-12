@@ -13,7 +13,7 @@ from sklearn.metrics import classification_report
 # 한글 폰트 설정
 rc('font', family='Malgun Gothic')
 
-# 1. 데이터 불러오기 및 확인하기
+# 데이터 불러오기 및 확인하기
 iris = load_iris()
 
 # iris 데이터의 전반적인 정보 확인
